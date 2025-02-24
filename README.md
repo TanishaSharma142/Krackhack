@@ -17,5 +17,6 @@ we need the following libraries given in text file to run te code.
 Python (requests, os, subprocess) - for backend
 Agent.ai API - fo providing ai agent
 HTML, CSS, JavaScript- for frontend
-
+The prompt in the input should be like this Generate code for the given file with {{filename}} with context {{context}}}
+for example: Generate code for the given file calculator.html with context : make a website that shows a calculator.
 *We accidently added wrong files as because of my system crash my files weren't saved properly. We got the permission from GDG mentor to make changes and add proper files.
