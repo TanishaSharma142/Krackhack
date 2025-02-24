@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Frontend</title>
+</head>
+<body>
+  <h1>Generate Code</h1>
+  <input type="text" id="userInput" placeholder="Enter your prompt">
+  <button id="generateButton">Generate</button>
+  <div id="codeContainer"></div>
+
+  <script>
+    const generateButton = document.getElementById('generateButton');
+    const codeContainer = document.getElementById('codeContainer');
+    const userInputField = document.getElementById('userInput');
+
+    generateButton.addEventListener('click', () => {
+      const userInputValue = userInputField.value;
+
+      fetch('http://127.0.0.1:5000/generate_code', {  // <---- Updated URL
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ user_input: userInputValue })  
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          codeContainer.innerHTML = data.code;
+        } else {
+          codeContainer.innerHTML = `<p>Error: ${data.error}</p>`;
+        }
+      })
+      .catch(error => {
+        codeContainer.innerHTML = `<p>Network error: ${error}</p>`;
+      });
+    });
+  </script>
+</body>
+</html>
