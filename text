@@ -1,5 +1,5 @@
 libraries used in python are to make our project:
-flask
+
 requests
 os
 subprocess
